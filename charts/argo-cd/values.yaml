@@ -5,6 +5,7 @@ argo-cd:
     extraArgs:
       - --insecure
     config:
+      users.anonymous.enabled: "true"
       repositories: |
         - type: helm
           name: argo-cd
