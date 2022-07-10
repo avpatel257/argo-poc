@@ -1,0 +1,10 @@
+cert-manager:
+  installCRDs: true
+  server:
+    extraArgs:
+      - --insecure
+    config:
+      repositories: |
+        - type: helm
+          name: cert-manager
+          repository: https://charts.jetstack.io
