@@ -2,8 +2,5 @@ dependencies:
 - name: argo-cd
   repository: https://argoproj.github.io/argo-helm
   version: 4.9.0
-- name: cert-manager
-  repository: https://charts.jetstack.io
-  version: v1.8.0
-digest: sha256:82976d8610aaae1aeaf0068636891018b35a2513205f84f6179e95aaad624e24
-generated: "2022-07-10T15:33:21.908296-04:00"
+digest: sha256:43ca4991839c8cceb1d755b2f1ff15b45b40bb97c5370b70adebb95a8b7fa0a1
+generated: "2022-07-10T15:36:07.115717-04:00"
