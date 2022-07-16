@@ -17,6 +17,7 @@ argo-cd:
 
     config:
       users.anonymous.enabled: "true"
+      users.session.duration: "1h"
       repositories: |
         - type: helm
           name: argo-cd
@@ -39,7 +40,7 @@ argo-cd:
         - name: stable
           type: helm
           url: https://charts.helm.sh/stable 
-        - url: https://github.com/avpatel257/gitops-apps.git
+        - url: https://github.com/avpatel257/gitops-internal.git
           passwordSecret:
             name: git-credential
             key: password
