@@ -16,7 +16,11 @@ git push
 
 helm install argo-cd charts/argo-cd/
 
+
+# Retrieve ArgoCD password
+kubectl get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
+
 
 2. Install the root app
 ---
