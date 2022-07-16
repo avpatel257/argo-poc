@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: nginx-test
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/avpatel257/gitops-internal.git
+      revision: HEAD
+      files:
+      - path: "values/values.yaml"
+  template:
+    metadata:
+      name: 'nginx-test'
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+      source:
+        helm:
+          valueFiles:
+          - values.yaml
+          values: |-
+            {{values}}
+        repoURL: https://github.com/baps-apps/devops-helm-charts.git
+        targetRevision: HEAD
+        path: "charts/k8s-deployer"
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: default

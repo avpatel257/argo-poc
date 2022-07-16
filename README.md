@@ -7,6 +7,15 @@ Setting up Argo CD with Helm [ArcoCD manages itself]
 ---
 
 ```bash
+kubectl create ns argocd
+kubens argocd
+
+export GITHUB_USERNAME=avpatel257
+export GITHUB_TOKEN=6270c82e60545256cfb2816005cbb979fede0b61
+kubectl create secret generic -n argocd git-credential \
+--from-literal=username=${GITHUB_USERNAME} \
+--from-literal=password=${GITHUB_TOKEN}
+
 helm repo add argo-cd https://argoproj.github.io/argo-helm
 helm dep update charts/argo-cd/
 
@@ -14,11 +23,11 @@ git add charts/argo-cd
 git commit -m 'add argo-cd chart'
 git push
 
-helm install argo-cd charts/argo-cd/
+helm install argo-cd charts/argo-cd/ -n argocd
 
 
 # Retrieve ArgoCD password
-kubectl get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
 
@@ -26,7 +35,7 @@ kubectl get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | 
 ---
 
 ```bash
-helm template apps/ | kubectl apply -f -
+helm template apps/ | kubectl apply -n argocd -f -
 ```
 
 3. Letting ArgoCD manage itself
@@ -35,5 +44,5 @@ helm template apps/ | kubectl apply -f -
 At this point we can remove argo helm release.
 
 ```bash
-kubectl delete secret -l owner=helm,name=argo-cd
+kubectl delete secret -n argocd -l owner=helm,name=argo-cd
 ```
