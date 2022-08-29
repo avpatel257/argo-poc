@@ -30,15 +30,24 @@ argo-cd:
           url: https://charts.helm.sh/stable 
         - url: https://github.com/avpatel257/argo-poc.git
           passwordSecret:
-            name: git-credential
-            key: password
+            name: repo-credential
+            key: git_password
           usernameSecret:
-            name: git-credential
-            key: username                     
+            name: repo-credential
+            key: git_username                     
         - url: https://github.com/baps-apps/sso-api-config.git
           passwordSecret:
-            name: git-credential
-            key: password
+            name: repo-credential
+            key: git_password
           usernameSecret:
-            name: git-credential
-            key: username                     
+            name: repo-credential
+            key: git_username                     
+        - type: helm
+          name: bapsapps-devops
+          url: https://nexus.devops.bapsapps.org/repository/helm-hosted/
+          usernameSecret:
+            name: repo-credential
+            key: nexus_username                     
+          passwordSecret:
+            name: repo-credential
+            key: nexus_password

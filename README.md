@@ -12,10 +12,15 @@ kubectl create ns argocd
 kubectl config set-context --current --namespace=argocd
 
 export GITHUB_USERNAME=avpatel257
-export GITHUB_TOKEN=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
-kubectl create secret generic -n argocd git-credential \
---from-literal=username=${GITHUB_USERNAME} \
---from-literal=password=${GITHUB_TOKEN}
+export GITHUB_TOKEN=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
+export NEXUS_USERNAME=jenkinsci
+export NEXUS_PASSWORD="jenkinspush123\!"
+
+kubectl create secret generic -n argocd repo-credential \
+--from-literal=git_username=${GITHUB_USERNAME} \
+--from-literal=git_password=${GITHUB_TOKEN} \
+--from-literal=nexus_username=${NEXUS_USERNAME} \
+--from-literal=nexus_password=${NEXUS_PASSWORD}
 
 sleep 2
 
