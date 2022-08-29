@@ -1,6 +1,10 @@
 Setting up Argo CD with Helm [ArcoCD manages itself]
 ---
 
+Helm chart + values files from Git 
+---
+[https://github.com/argoproj/argo-cd/issues/2789](https://github.com/argoproj/argo-cd/issues/2789)
+
 [https://www.arthurkoziel.com/setting-up-argocd-with-helm/](https://www.arthurkoziel.com/setting-up-argocd-with-helm/)
 
 
@@ -12,7 +16,7 @@ kubectl create ns argocd
 kubectl config set-context --current --namespace=argocd
 
 export GITHUB_USERNAME=avpatel257
-export GITHUB_TOKEN=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
+export GITHUB_TOKEN="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"
 export NEXUS_USERNAME=jenkinsci
 export NEXUS_PASSWORD="jenkinspush123\!"
 
