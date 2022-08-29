@@ -1,0 +1,22 @@
+{{- if eq "prod" $.Values.aws.cluster }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps-prod
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: argocd
+  project: default
+  source:
+    path: apps/prod
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true    
+{{- end }}

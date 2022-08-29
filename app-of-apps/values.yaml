@@ -1,0 +1,8 @@
+aws:
+  cluster: 
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/avpatel257/argo-poc.git
+    targetRevision: HEAD  
