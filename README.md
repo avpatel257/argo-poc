@@ -12,7 +12,7 @@ kubectl create ns argocd
 kubectl config set-context --current --namespace=argocd
 
 export GITHUB_USERNAME=avpatel257
-export GITHUB_TOKEN=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
+export GITHUB_TOKEN=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
 export NEXUS_USERNAME=jenkinsci
 export NEXUS_PASSWORD="jenkinspush123\!"
 
