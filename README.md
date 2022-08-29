@@ -50,6 +50,7 @@ kubectl delete secret -l owner=helm,name=argo-cd
 
 
 ----
+```bash
 #!/bin/bash
 
 #ArgoCD
@@ -82,3 +83,5 @@ helm template --set aws.cluster=nonprod app-of-apps/ | kubectl apply -f -
 
 # At this point we can remove argo helm release. Letting ArgoCD manage itself. 
 kubectl delete secret -l owner=helm,name=argo-cd
+
+```
