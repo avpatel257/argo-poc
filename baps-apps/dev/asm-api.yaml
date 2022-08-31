@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: asm-api
+  namespace: argocd
+
+spec:
+  source:
+    repoURL: https://github.com/avpatel257/argo-poc
+    path: apps-helm-values-repo
+    targetRevision: HEAD
+
+    helm:
+      # Helm values files for overriding values in the helm chart
+      # The path is relative to the spec.source.path directory defined above
+      valueFiles:
+      - asm-api-values.yaml    
+      # Extra parameters to set (same as setting through values.yaml, but these take precedence)
+      parameters:
+      - name: "clusterDomain"
+        value: dev.bapsapps.org
+      - name: "environment"
+        value: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

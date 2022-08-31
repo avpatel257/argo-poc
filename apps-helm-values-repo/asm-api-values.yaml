@@ -1,0 +1,16 @@
+application:
+  name: asm-api
+
+## ------------------------------------------------
+## K8S Deployment parameters
+## ------------------------------------------------
+deployment:
+  vaultIntegrationEnabled: false
+  image: nginx
+  tag: latest
+        
+## ------------------------------------------------
+## K8S Service parameters
+## ------------------------------------------------
+service:
+  port: 80

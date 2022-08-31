@@ -12,13 +12,15 @@ Helm chart + values files from Git
 ```bash
 #!/bin/bash
 #ArgoCD
+export GITHUB_USERNAME=CHANGEME
+export GITHUB_TOKEN="CHANGEME"
+export NEXUS_USERNAME=jenkinsci
+export NEXUS_PASSWORD="CHANGEME"
+
+
+
 kubectl create ns argocd
 kubectl config set-context --current --namespace=argocd
-
-export GITHUB_USERNAME=avpatel257
-export GITHUB_TOKEN="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"
-export NEXUS_USERNAME=jenkinsci
-export NEXUS_PASSWORD="jenkinspush123\!"
 
 kubectl create secret generic -n argocd repo-credential \
 --from-literal=git_username=${GITHUB_USERNAME} \
@@ -56,3 +58,7 @@ helm template --set aws.cluster=nonprod app-of-apps/ | kubectl apply -f -
 kubectl delete secret -l owner=helm,name=argo-cd
 
 ```
+
+
+
+helm install argo-cd argo/argo-cd -f helm-values-test.yaml

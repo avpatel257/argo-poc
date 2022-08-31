@@ -8,13 +8,13 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: {{ .Values.spec.destination.server }}
+    server: https://kubernetes.default.svc
     namespace: argocd
   project: default
   source:
     path: baps-apps/dev
-    repoURL: {{ .Values.spec.source.repoURL }}
-    targetRevision: {{ .Values.spec.source.targetRevision }}
+    repoURL: https://github.com/avpatel257/argo-poc.git
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
