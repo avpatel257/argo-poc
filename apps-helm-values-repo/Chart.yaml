@@ -3,6 +3,6 @@ name: root
 version: 1.0.0
 
 dependencies:
-- name: bapsapps-devops
+- name: bapsapps-devops/k8s-deployer
   version: 0.1.0
   repository: https://nexus.devops.bapsapps.org/repository/helm-hosted/
