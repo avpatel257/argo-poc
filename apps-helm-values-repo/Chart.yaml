@@ -1,6 +1,9 @@
 apiVersion: v2
-name: root
-version: 1.0.0
+name: bapsapps
+description: A Helm chart for bapsapps
+type: application
+version: 0.1.0
+appVersion: "1.0"
 
 dependencies:
 - name: k8s-deployer
